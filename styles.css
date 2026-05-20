@@ -52,12 +52,13 @@ body {
 a { color: inherit; text-decoration: none; }
 ::selection { background: var(--ink); color: var(--bg); }
 
-/* ━━━ FOCUS — keyboard only, WCAG 2.4.7 ━━━ */
+/* ━━━ FOCUS — keyboard only, WCAG 2.4.7 ━━━
+   outline naturally follows the element's own border-radius in modern browsers,
+   so we don't set border-radius here (would override pill/circle shapes). */
 :where(a, button, [tabindex]):focus { outline: none; }
 :where(a, button, [tabindex]):focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 3px;
-  border-radius: 4px;
 }
 
 /* ━━━ SKIP LINK — hidden until keyboard-focused ━━━ */
@@ -132,16 +133,19 @@ a { color: inherit; text-decoration: none; }
   color: var(--ink);
   transition: color var(--duration-fast) var(--ease-enter);
 }
-.menu-cta {
-  background: var(--ink) !important;
-  color: var(--bg) !important;
+.menu .menu-cta {
+  background: var(--ink);
+  color: var(--bg);
   padding: 9px 18px;
   border-radius: 999px;
   font-size: 14px;
   font-weight: 500;
-  transition: background .2s ease;
+  transition: background var(--duration-base) var(--ease-exit);
 }
-.menu-cta:hover { background: var(--ink-soft) !important; }
+.menu .menu-cta:hover {
+  background: var(--ink-soft);
+  transition: background var(--duration-base) var(--ease-enter);
+}
 
 @media (max-width: 720px) {
   .nav { padding: 0 20px; }
@@ -658,19 +662,19 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ━━━ LANGUAGE SWITCH ━━━ */
-.lang-switch {
+.menu .lang-switch {
   width: 34px; height: 34px;
   display: inline-flex; align-items: center; justify-content: center;
   border: 1px solid var(--line);
   border-radius: 50%;
   font-size: 13px;
   font-weight: 600;
-  color: var(--ink) !important;
+  color: var(--ink);
   transition:
     background var(--duration-fast) var(--ease-exit),
     border-color var(--duration-fast) var(--ease-exit);
 }
-.lang-switch:hover {
+.menu .lang-switch:hover {
   background: var(--bg-soft);
   border-color: var(--ink);
   transition:
@@ -727,9 +731,35 @@ html[dir="rtl"] .check-list li::before {
 .reveal {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity .8s ease, transform .8s cubic-bezier(.16, 1, .3, 1);
+  transition:
+    opacity var(--duration-slow) var(--ease-exit),
+    transform var(--duration-slow) var(--ease-enter);
 }
 .reveal.in {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ━━━ PERFORMANCE — containment & content-visibility ━━━
+   `contain: layout style` lets the browser skip layout/style work on these blocks
+   when their internals change. Paint is intentionally excluded (Mistake #9 — we
+   may add overflowing decorative pseudos later and don't want them clipped).
+   `content-visibility: auto` skips rendering work for sections off-screen.
+   `contain-intrinsic-size` reserves space so off-screen content doesn't cause
+   CLS or scroll-jump when revealed. */
+.service,
+.persona,
+.strip-item,
+.aud-item,
+.enet-active {
+  contain: layout style;
+}
+
+.services,
+.about,
+.audience,
+.contact,
+.footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
 }
