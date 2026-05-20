@@ -1,0 +1,7 @@
+# robots.txt for alershad.ly
+# Spec: RFC 9309
+
+User-agent: *
+Allow: /
+
+Sitemap: https://alershad.ly/sitemap.xml
