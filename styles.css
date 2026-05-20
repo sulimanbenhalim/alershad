@@ -10,6 +10,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
+  /* color */
   --bg:        #ffffff;
   --bg-soft:   #fafafa;
   --ink:       #0a0a0a;
@@ -17,8 +18,20 @@
   --muted:     #71717a;
   --line:      #ececec;
   --line-soft: #f4f4f5;
+  --focus:     #0a7cff;
+
+  /* shape */
   --radius:    14px;
   --maxw:      1200px;
+
+  /* motion — directional easing per CSS Transitions Level 1
+     ease-enter is applied on hover-IN, ease-exit on hover-OUT */
+  --ease-enter:  cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-exit:   cubic-bezier(0.55, 0, 1, 0.45);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --duration-fast: 0.15s;
+  --duration-base: 0.25s;
+  --duration-slow: 0.4s;
 }
 
 html { scroll-behavior: smooth; }
@@ -38,6 +51,47 @@ body {
 
 a { color: inherit; text-decoration: none; }
 ::selection { background: var(--ink); color: var(--bg); }
+
+/* ━━━ FOCUS — keyboard only, WCAG 2.4.7 ━━━ */
+:where(a, button, [tabindex]):focus { outline: none; }
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ━━━ SKIP LINK — hidden until keyboard-focused ━━━ */
+.skip-link {
+  position: absolute;
+  top: 0; left: 0;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 1000;
+  transform: translateY(-120%);
+  transition: transform var(--duration-base) var(--ease-exit);
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--focus);
+  outline-offset: -4px;
+  transition: transform var(--duration-base) var(--ease-enter);
+}
+
+/* ━━━ REDUCED MOTION — disable decorative animation ━━━ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
 
 /* ━━━ NAV ━━━ */
 .nav {
@@ -72,9 +126,12 @@ a { color: inherit; text-decoration: none; }
   font-size: 14px;
   font-weight: 500;
   color: var(--muted);
-  transition: color .2s ease;
+  transition: color var(--duration-fast) var(--ease-exit);
 }
-.menu a:hover { color: var(--ink); }
+.menu a:hover {
+  color: var(--ink);
+  transition: color var(--duration-fast) var(--ease-enter);
+}
 .menu-cta {
   background: var(--ink) !important;
   color: var(--bg) !important;
@@ -141,9 +198,17 @@ a { color: inherit; text-decoration: none; }
   border-radius: 999px;
   font-size: 15px;
   font-weight: 500;
-  transition: background .2s ease, transform .2s ease;
+  transition:
+    background var(--duration-base) var(--ease-exit),
+    transform var(--duration-base) var(--ease-exit);
 }
-.btn-primary:hover { background: var(--ink-soft); transform: translateY(-1px); }
+.btn-primary:hover {
+  background: var(--ink-soft);
+  transform: translateY(-1px);
+  transition:
+    background var(--duration-base) var(--ease-enter),
+    transform var(--duration-base) var(--ease-spring);
+}
 .btn-ghost {
   display: inline-block;
   padding: 14px 22px;
@@ -151,9 +216,12 @@ a { color: inherit; text-decoration: none; }
   font-size: 15px;
   font-weight: 500;
   color: var(--ink);
-  transition: background .2s ease;
+  transition: background var(--duration-base) var(--ease-exit);
 }
-.btn-ghost:hover { background: var(--line-soft); }
+.btn-ghost:hover {
+  background: var(--line-soft);
+  transition: background var(--duration-base) var(--ease-enter);
+}
 
 /* ━━━ STATS STRIP ━━━ */
 .strip {
@@ -359,12 +427,13 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 14px;
 }
 .enet-btn {
+  display: block;
+  text-align: center;
   border: none;
   padding: 11px 8px;
   border-radius: 10px;
   font-size: 13px; font-weight: 600;
   font-family: inherit;
-  cursor: pointer;
 }
 .enet-btn--fill { background: #0a7cff; color: #fff; }
 .enet-btn--out { background: #fff; color: #0a7cff; border: 1.5px solid #0a7cff; }
@@ -449,12 +518,19 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 32px;
-  transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+  transition:
+    border-color var(--duration-base) var(--ease-exit),
+    transform var(--duration-base) var(--ease-exit),
+    box-shadow var(--duration-base) var(--ease-exit);
 }
 .service:hover {
   border-color: #d4d4d8;
   transform: translateY(-2px);
   box-shadow: 0 12px 30px -16px rgba(0, 0, 0, .08);
+  transition:
+    border-color var(--duration-base) var(--ease-enter),
+    transform var(--duration-base) var(--ease-enter),
+    box-shadow var(--duration-base) var(--ease-enter);
 }
 .service-num {
   font-size: 13px;
@@ -590,11 +666,16 @@ a { color: inherit; text-decoration: none; }
   font-size: 13px;
   font-weight: 600;
   color: var(--ink) !important;
-  transition: background .2s ease, border-color .2s ease;
+  transition:
+    background var(--duration-fast) var(--ease-exit),
+    border-color var(--duration-fast) var(--ease-exit);
 }
 .lang-switch:hover {
   background: var(--bg-soft);
   border-color: var(--ink);
+  transition:
+    background var(--duration-fast) var(--ease-enter),
+    border-color var(--duration-fast) var(--ease-enter);
 }
 
 /* ━━━ ARABIC / RTL ━━━ */

@@ -12,25 +12,29 @@
 </head>
 <body>
 
+<a href="#main" class="skip-link">Skip to content</a>
+
 <!-- NAV -->
 <header class="nav">
-  <a href="#" class="brand">
-    <span class="brand-mark"></span>
+  <a href="#" class="brand" aria-label="Al-Irshad home">
+    <span class="brand-mark" aria-hidden="true"></span>
     <span class="brand-name">Al-Irshad</span>
   </a>
-  <nav class="menu">
+  <nav class="menu" aria-label="Primary">
     <a href="#product">Product</a>
     <a href="#services">Services</a>
     <a href="#about">About</a>
     <a href="#contact" class="menu-cta">Contact</a>
-    <a href="ar.html" class="lang-switch">ع</a>
+    <a href="ar.html" class="lang-switch" aria-label="التبديل إلى العربية" lang="ar">ع</a>
   </nav>
 </header>
 
+<main id="main">
+
 <!-- HERO -->
-<section class="hero">
+<section class="hero" aria-labelledby="hero-heading">
   <p class="eyebrow">Al-Irshad Center for Computer Services · Benghazi</p>
-  <h1 class="hero-title">
+  <h1 class="hero-title" id="hero-heading">
     Connect anywhere.<br/>
     <span class="thin">Anytime.</span>
   </h1>
@@ -45,7 +49,7 @@
 </section>
 
 <!-- STATS STRIP -->
-<section class="strip">
+<section class="strip" aria-label="Key numbers">
   <div class="strip-item">
     <div class="strip-value">187+</div>
     <div class="strip-label">Countries covered</div>
@@ -65,10 +69,10 @@
 </section>
 
 <!-- PRODUCT -->
-<section class="product" id="product">
+<section class="product" id="product" aria-labelledby="product-heading">
   <div class="product-copy">
     <span class="tag">Flagship product</span>
-    <h2>E-Net.<br/>A global eSIM in your pocket.</h2>
+    <h2 id="product-heading">E-Net.<br/>A global eSIM in your pocket.</h2>
     <p>
       E-Net turns on mobile data in about 30 seconds, in 187 countries.
       No plastic SIM. No roaming charges. No contract. It's built for
@@ -82,15 +86,15 @@
     </ul>
   </div>
 
-  <div class="product-art">
+  <div class="product-art" aria-hidden="true">
     <div class="phone">
       <div class="phone-screen">
         <div class="status-bar">
           <span class="status-time">8:55</span>
           <span class="status-icons">
-            <svg width="14" height="10" viewBox="0 0 14 10"><path d="M1 6.5h2v2.5H1zM4.5 4.5h2V9h-2zM8 2.5h2V9H8zM11.5.5h2V9h-2z" fill="currentColor"/></svg>
-            <svg width="14" height="10" viewBox="0 0 14 10"><path d="M7 2.5a7 7 0 015 2L7 9.5 2 4.5a7 7 0 015-2zM7 0a9.5 9.5 0 016.9 3L12 4.9a7 7 0 00-10 0L.1 3A9.5 9.5 0 017 0z" fill="currentColor"/></svg>
-            <svg width="22" height="10" viewBox="0 0 22 10"><rect x=".5" y=".5" width="18" height="9" rx="2" fill="none" stroke="currentColor"/><rect x="2" y="2" width="15" height="6" rx="1" fill="currentColor"/><rect x="19" y="3" width="1.5" height="4" rx=".5" fill="currentColor"/></svg>
+            <svg width="14" height="10" viewBox="0 0 14 10" focusable="false"><path d="M1 6.5h2v2.5H1zM4.5 4.5h2V9h-2zM8 2.5h2V9H8zM11.5.5h2V9h-2z" fill="currentColor"/></svg>
+            <svg width="14" height="10" viewBox="0 0 14 10" focusable="false"><path d="M7 2.5a7 7 0 015 2L7 9.5 2 4.5a7 7 0 015-2zM7 0a9.5 9.5 0 016.9 3L12 4.9a7 7 0 00-10 0L.1 3A9.5 9.5 0 017 0z" fill="currentColor"/></svg>
+            <svg width="22" height="10" viewBox="0 0 22 10" focusable="false"><rect x=".5" y=".5" width="18" height="9" rx="2" fill="none" stroke="currentColor"/><rect x="2" y="2" width="15" height="6" rx="1" fill="currentColor"/><rect x="19" y="3" width="1.5" height="4" rx=".5" fill="currentColor"/></svg>
           </span>
         </div>
 
@@ -100,15 +104,15 @@
             <strong>User</strong>
           </div>
           <span class="bell">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0112 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 003.4 0"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M6 8a6 6 0 0112 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 003.4 0"/></svg>
           </span>
         </div>
 
         <div class="enet-active">
           <div class="enet-active-head">
-            <img class="enet-flag" src="https://flagcdn.com/tr.svg" alt="Turkey" />
+            <img class="enet-flag" src="https://flagcdn.com/tr.svg" alt="" width="42" height="32" loading="lazy" decoding="async" />
             <span class="enet-status">
-              <span class="enet-status-dot"></span> Completed
+              <span class="enet-status-dot" aria-hidden="true"></span> Completed
             </span>
           </div>
           <div class="enet-active-name">Turkey</div>
@@ -120,14 +124,14 @@
           </div>
           <div class="enet-progress"><span></span></div>
           <div class="enet-expires">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             Expires today
           </div>
         </div>
 
         <div class="enet-buttons">
-          <button class="enet-btn enet-btn--fill">Browse eSIMs</button>
-          <button class="enet-btn enet-btn--out">Top Up Wallet</button>
+          <span class="enet-btn enet-btn--fill">Browse eSIMs</span>
+          <span class="enet-btn enet-btn--out">Top Up Wallet</span>
         </div>
 
         <div class="enet-section">
@@ -136,26 +140,26 @@
         </div>
 
         <div class="enet-countries">
-          <div class="enet-country"><img class="ef" src="https://flagcdn.com/tr.svg" alt="Türkiye" /><b>Türkiye</b></div>
-          <div class="enet-country"><img class="ef" src="https://flagcdn.com/tn.svg" alt="Tunisia" /><b>Tunisia</b></div>
-          <div class="enet-country"><img class="ef" src="https://flagcdn.com/eg.svg" alt="Egypt" /><b>Egypt</b></div>
+          <div class="enet-country"><img class="ef" src="https://flagcdn.com/tr.svg" alt="" width="80" height="54" loading="lazy" decoding="async" /><b>Türkiye</b></div>
+          <div class="enet-country"><img class="ef" src="https://flagcdn.com/tn.svg" alt="" width="80" height="54" loading="lazy" decoding="async" /><b>Tunisia</b></div>
+          <div class="enet-country"><img class="ef" src="https://flagcdn.com/eg.svg" alt="" width="80" height="54" loading="lazy" decoding="async" /><b>Egypt</b></div>
         </div>
 
         <div class="enet-tabbar">
           <span class="tab active">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l9 8h-2v9h-5v-6h-4v6H5v-9H3z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M12 3l9 8h-2v9h-5v-6h-4v6H5v-9H3z"/></svg>
             <b>Home</b>
           </span>
           <span class="tab">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>
             <b>Browse</b>
           </span>
           <span class="tab">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="14" width="3" height="6"/><rect x="8" y="10" width="3" height="10"/><rect x="13" y="6" width="3" height="14"/><rect x="18" y="2" width="3" height="18"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" focusable="false"><rect x="3" y="14" width="3" height="6"/><rect x="8" y="10" width="3" height="10"/><rect x="13" y="6" width="3" height="14"/><rect x="18" y="2" width="3" height="18"/></svg>
             <b>My eSIMs</b>
           </span>
           <span class="tab">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
             <b>Profile</b>
           </span>
         </div>
@@ -165,25 +169,25 @@
 </section>
 
 <!-- SERVICES -->
-<section class="services" id="services">
+<section class="services" id="services" aria-labelledby="services-heading">
   <header class="section-head">
     <span class="tag">What we do</span>
-    <h2>Three services. One mission.</h2>
+    <h2 id="services-heading">Three services. One mission.</h2>
   </header>
 
   <div class="service-grid">
     <article class="service">
-      <div class="service-num">01</div>
+      <div class="service-num" aria-hidden="true">01</div>
       <h3>Digital connectivity</h3>
       <p>eSIM plans through E-Net, mobile data abroad, and cross-border telecom work.</p>
     </article>
     <article class="service">
-      <div class="service-num">02</div>
+      <div class="service-num" aria-hidden="true">02</div>
       <h3>IT solutions &amp; applications</h3>
       <p>Custom apps, system integration, and digital service platforms.</p>
     </article>
     <article class="service">
-      <div class="service-num">03</div>
+      <div class="service-num" aria-hidden="true">03</div>
       <h3>Technology consulting</h3>
       <p>Connectivity strategy, telecom design, and help with digital transformation.</p>
     </article>
@@ -191,11 +195,11 @@
 </section>
 
 <!-- ABOUT -->
-<section class="about" id="about">
+<section class="about" id="about" aria-labelledby="about-heading">
   <div class="about-grid">
     <div class="about-left">
       <span class="tag">About</span>
-      <h2>Built in Benghazi. Made for the world.</h2>
+      <h2 id="about-heading">Built in Benghazi. Made for the world.</h2>
     </div>
     <div class="about-right">
       <p>
@@ -212,7 +216,7 @@
 </section>
 
 <!-- WHO IT'S FOR -->
-<section class="audience">
+<section class="audience" aria-label="Who it's for">
   <div class="aud-row">
     <div class="aud-item">Travelers</div>
     <div class="aud-item">Business professionals</div>
@@ -222,17 +226,19 @@
 </section>
 
 <!-- CONTACT -->
-<section class="contact" id="contact">
-  <h2>Get in touch.</h2>
+<section class="contact" id="contact" aria-labelledby="contact-heading">
+  <h2 id="contact-heading">Get in touch.</h2>
   <p>For partnerships, E-Net questions, or custom IT work.</p>
   <a href="mailto:hello@alershad.ly" class="btn-primary">hello@alershad.ly</a>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-row">
     <div class="footer-brand">
-      <span class="brand-mark"></span>
+      <span class="brand-mark" aria-hidden="true"></span>
       <span>Al-Irshad</span>
     </div>
     <div class="footer-meta">
@@ -243,6 +249,6 @@
   </div>
 </footer>
 
-<script src="main.js"></script>
+<script src="main.js" defer></script>
 </body>
 </html>
